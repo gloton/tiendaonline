@@ -1,7 +1,10 @@
 <?php 
 session_start();
-$_SESSION['producto'][$_SESSION['contador']] = $_GET['p'];
-$_SESSION['contador']++;
+if(isset($_GET['p'])){
+	$_SESSION['producto'][$_SESSION['contador']] = $_GET['p'];
+	$_SESSION['contador']++;
+}
+
 for($i = 0;$i< $_SESSION['contador'];$i++){
 	echo "Producto: ".$_SESSION['producto'][$i]."<br>";
 	/*
