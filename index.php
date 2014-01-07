@@ -2,7 +2,7 @@
 <?php 
 $conexion = mysqli_connect('localhost','root','root','tiendaonline');
 mysqli_set_charset($conexion, "utf8");
-$peticion = "SELECT * FROM productos";
+$peticion = "SELECT * FROM productos WHERE existencias > 0";
 $resultado = mysqli_query($conexion, $peticion);
 while($fila = mysqli_fetch_array($resultado)) {
 	echo "<article>";

@@ -25,18 +25,27 @@ if($contador > 0){
 	for($i = 0;$i< $_SESSION['contador'];$i++){
 		$peticion = "INSERT INTO lineaspedido VALUES (NULL,'".$_SESSION['idpedido']."','".$_SESSION['producto'][$i]."','1')";
 		$resultado = mysqli_query($conexion, $peticion);
-		echo '<br>tu pedido se ha realizado satisfactoriamente. Redirigiendo en 5 segundos a la pagina principal';
-		session_destroy();
-		echo '
-		<meta http-equiv="refresh" content="5; url=../index.php">
-		';		
+		
+		//averiguar cuantos productos habian hasta ese momento
+		$peticion = "SELECT * FROM productos WHERE id='".$_SESSION['producto'][$i]."'";
+		$resultado = mysqli_query($conexion, $peticion);
+		while($fila = mysqli_fetch_array($resultado)) {
+			$existencias = $fila['existencias'];
+			$peticiondos = "UPDATE productos SET existencias = '".($existencias-1)."' WHERE id='".$_SESSION['producto'][$i]."'";
+			$resultadodos = mysqli_query($conexion, $peticiondos);
+		}		
 	}	
 	
-	
-} else {
-	echo 'El usuario NO existe';
+	echo '<br>tu pedido se ha realizado satisfactoriamente. Redirigiendo en 5 segundos a la pagina principal';
+	session_destroy();
 	echo '
 		<meta http-equiv="refresh" content="5; url=../index.php">
+		';
+	
+} else {
+	echo 'El usuario NO existe, volviendo a la tienda en 5 segundos';
+	echo '
+		<meta http-equiv="refresh" content="5; url=../confirmar.php">
 	';
 }
 mysqli_close($conexion);
