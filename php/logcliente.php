@@ -6,9 +6,11 @@ $peticion = "SELECT * FROM clientes WHERE usuario = '".$_POST['usuario']."' AND 
 $resultado = mysqli_query($conexion, $peticion);
 while($fila = mysqli_fetch_array($resultado)) {
 	$contador++;
+	$_SESSION['usuario'] = $fila['id'];
 }
 if($contador > 0){
-	echo 'El usuario existe';
+	$peticion = "INSERT INTO pedidos VALUES (NULL,".$_SESSION['usuario'].",'".date('U')."','0')";
+	$resultado = mysqli_query($conexion, $peticion);	
 } else {
 	echo 'El usuario NO existe';
 }
