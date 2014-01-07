@@ -23,3 +23,4 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 			Carrito
 		</div>
 		<a href='php/destruir.php'><button>Vaciar carrito</button></a>
+		<a href='confirmar.php'><button>Confirmar compra</button></a>
