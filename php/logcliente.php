@@ -25,16 +25,21 @@ if($contador > 0){
 	for($i = 0;$i< $_SESSION['contador'];$i++){
 		$peticion = "INSERT INTO lineaspedido VALUES (NULL,'".$_SESSION['idpedido']."','".$_SESSION['producto'][$i]."','1')";
 		$resultado = mysqli_query($conexion, $peticion);
+		echo '<br>tu pedido se ha realizado satisfactoriamente. Redirigiendo en 5 segundos a la pagina principal';
+		session_destroy();
+		echo '
+		<meta http-equiv="refresh" content="5; url=../index.php">
+		';		
 	}	
 	
 	
 } else {
 	echo 'El usuario NO existe';
-}
-mysqli_close($conexion);
-echo '<br>tu pedido se ha realizado satisfactoriamente. Redirigiendo en 5 segundos a la pagina principal';
-echo '
+	echo '
 		<meta http-equiv="refresh" content="5; url=../index.php">
 	';
+}
+mysqli_close($conexion);
+
 include "piedepagina.inc";
 ?>
