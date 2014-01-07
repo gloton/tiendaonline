@@ -1,5 +1,5 @@
 <?php 
-session_start();
+include "cabecera.inc";
 $contador = 0;
 $conexion = mysqli_connect('localhost','root','root','tiendaonline');
 mysqli_set_charset($conexion, "utf8");
@@ -19,6 +19,7 @@ if($contador > 0){
 	while($fila = mysqli_fetch_array($resultado)) {
 		$_SESSION['idpedido'] = $fila['id'];
 	}
+	
 	echo $_SESSION['idpedido'];	
 	
 	for($i = 0;$i< $_SESSION['contador'];$i++){
@@ -31,4 +32,9 @@ if($contador > 0){
 	echo 'El usuario NO existe';
 }
 mysqli_close($conexion);
+echo '<br>tu pedido se ha realizado satisfactoriamente. Redirigiendo en 5 segundos a la pagina principal';
+echo '
+		<meta http-equiv="refresh" content="5; url=../index.php">
+	';
+include "piedepagina.inc";
 ?>
