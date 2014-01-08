@@ -7,6 +7,6 @@ function inicio ()
 }
 
 function anade(){
-	$("#carrito").append($(this).val());
+	//$("#carrito").append($(this).val());
 	$("#carrito").load("php/poncarrito.php?p="+$(this).val());
 } 
