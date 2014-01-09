@@ -1,7 +1,7 @@
 <table border="1">
 <?php 
-
-$conexion = mysqli_connect('localhost','root','root','tiendaonline');
+include "../php/config.inc";
+$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
 $peticion = "SELECT pedidos.id AS idpedido,fecha,estado,nombre,apellidos FROM pedidos LEFT JOIN clientes ON pedidos.idcliente = clientes.id ORDER BY estado, fecha ASC";
 $resultado = mysqli_query($conexion, $peticion);

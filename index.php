@@ -1,6 +1,9 @@
-<?php include 'php/cabecera.inc'; ?>
 <?php 
-$conexion = mysqli_connect('localhost','root','root','tiendaonline');
+include "php/config.inc";
+include 'php/cabecera.inc';
+?>
+<?php 
+$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
 $peticion = "SELECT * FROM productos WHERE existencias > 0";
 $resultado = mysqli_query($conexion, $peticion);

@@ -1,4 +1,5 @@
 <?php 
+include "config.inc";
 session_start();
 
 $suma = 0;
@@ -9,7 +10,7 @@ if(isset($_GET['p'])){
 }
 
 
-$conexion = mysqli_connect('localhost','root','root','tiendaonline');
+$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
 
 

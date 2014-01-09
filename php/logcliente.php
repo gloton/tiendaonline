@@ -1,7 +1,8 @@
 <?php 
+include "config.inc";
 include "cabecera.inc";
 $contador = 0;
-$conexion = mysqli_connect('localhost','root','root','tiendaonline');
+$conexion = mysqli_connect($servidor,$usuario,$contrasena,$basededatos);
 mysqli_set_charset($conexion, "utf8");
 $peticion = "SELECT * FROM clientes WHERE usuario = '".$_POST['usuario']."' AND contrasena = '".$_POST['contrasena']."'";
 $resultado = mysqli_query($conexion, $peticion);
