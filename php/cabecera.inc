@@ -19,8 +19,10 @@ if(!isset($_SESSION['contador'])){$_SESSION['contador'] = 0;}
 			<h2>Subtitulo de la tienda </h2>
 		</header>
 		<section>
-		<div id="carrito" style="background:rgb(200,200,200);color:black;">
-			Carrito
+		<div id="contienecarrito">
+			<div id="carrito" style="background:rgb(200,200,200);color:black;">
+				Carrito
+			</div>
+			<a href='php/destruir.php'><button>Vaciar carrito</button></a>
+			<a href='confirmar.php'><button>Confirmar compra</button></a>
 		</div>
-		<a href='php/destruir.php'><button>Vaciar carrito</button></a>
-		<a href='confirmar.php'><button>Confirmar compra</button></a>
